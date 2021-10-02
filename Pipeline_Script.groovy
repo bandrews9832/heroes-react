@@ -1,13 +1,14 @@
 node {
     stage('Prepare') {
-        //cleanup workspace
-        //clone git repo
+        bat 'rmdir /S /Q heroes-react' //cleanup workspace
+        bat 'git clone https://github.com/bandrews9832/heroes-react.git' //clone git repo
     }
     stage('Build') {
         //update "heroes-react" to your project name
         dir('heroes-react') {
-            //install dependencies
-            //run build
+            bat 'npm install' //install dependencies
+            bat 'npm run build -- --prod' //run build
+            archiveArtofacts 'build/**'
         }
     }
     stage('Deploy') {
@@ -15,7 +16,7 @@ node {
             timeout(5) {
                 //update "heroes-react" to your project name
                 dir('heroes-react') {
-                    //launch app
+                    bat 'npm run quick' //launch app
                 }
             }
         } catch (err) {
