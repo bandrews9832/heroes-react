@@ -1,6 +1,6 @@
 node {
     stage('Prepare') {
-        bat ''rmdir D:\Documents\Grad School\Large Scale Application Deployment\Week 3\Tech Task\GitHub\heroes-react'' //cleanup workspace
+        bat 'rmdir 'D:\Documents\Grad School\Large Scale Application Deployment\Week 3\Tech Task\GitHub\heroes-react'' //cleanup workspace
         bat 'git clone https://github.com/bandrews9832/heroes-react.git' //clone git repo
     }
     stage('Build') {
