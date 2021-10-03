@@ -1,13 +1,13 @@
 node {
     stage('Prepare') {
-        bat 'rmdir -Path \'D:\\Documents\\Grad School\\Large Scale Application Deployment\\Week 3\\Tech Task\\GitHub\\heroes-react\''
-        // "rmdir -Path /S /Q heroes-react"     // Old Path"D:\Documents\Grad School\Large Scale Application Deployment\Week 3\Tech Task\GitHub\heroes-react"' //cleanup workspace
+        bat 'rmdir -Path /S /Q heroes-react'     // Old Path"D:\Documents\Grad School\Large Scale Application Deployment\Week 3\Tech Task\GitHub\heroes-react"' //cleanup workspace
         bat 'git clone https://github.com/bandrews9832/heroes-react.git' //clone git repo
     }
     stage('Build') {
         //update "heroes-react" to your project name
         dir('heroes-react') {
             bat 'npm install' //install dependencies
+            bat 'npm audit fix' //correct any potential vulnerabilities 
             bat 'npm run build -- --prod' //run build
             archiveArtofacts 'build/**'
         }
