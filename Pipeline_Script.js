@@ -8,7 +8,7 @@ node {
     }
     stage('Build') {
         //update "heroes-react" to your project name
-        dir('heroes-react') {
+        dir('D:\\Documents\\Grad School\\Large Scale Application Deployment\\Jenkins Directory\\heroes-react') {
             bat 'npm install' //install dependencies
             bat 'npm audit fix' //correct any potential vulnerabilities 
             bat 'npm run build -- --prod' //run build
@@ -19,7 +19,7 @@ node {
         try {
             timeout(5) {
                 //update "heroes-react" to your project name
-                dir('heroes-react') {
+                dir('D:\\Documents\\Grad School\\Large Scale Application Deployment\\Jenkins Directory\\heroes-react') {
                     bat 'npm run quick' //launch app
                 }
             }
