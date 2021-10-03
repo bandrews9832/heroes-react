@@ -1,7 +1,8 @@
 node {
     stage('Prepare') {
         dir('D:\\Documents\\Grad School\\Large Scale Application Deployment\\Jenkins Directory') {
-            bat 'rmdir /S /Q heroes-react'
+            deleteDir()
+            //bat 'rmdir /S /Q heroes-react'
             bat 'git clone https://github.com/bandrews9832/heroes-react.git'
         }
     }
@@ -10,7 +11,7 @@ node {
         dir('D:\\Documents\\Grad School\\Large Scale Application Deployment\\Jenkins Directory\\heroes-react') {
             bat 'npm install' //install dependencies
             bat 'npm run build -- --prod' //run build
-            //archiveArtofacts 'build/**'
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'build/**', followSymlinks: false
         }
     }
     stage('Deploy') {
