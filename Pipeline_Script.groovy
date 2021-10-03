@@ -1,9 +1,7 @@
 node {
     stage('Prepare') {
-        dir('C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\Tech Task Wk3 Pipeline') {
-            bat 'rmdir /S /Q heroes-react'
-        }
-        //bat 'Remove-Item -Path env.Tech_Task_Wk3_Loc'     // Old Path"D:\Documents\Grad School\Large Scale Application Deployment\Week 3\Tech Task\GitHub\heroes-react"' //cleanup workspace
+        deleteDir(env.Tech_Task_Wk3_Loc)
+        //bat 'rmdir -Path env.Tech_Task_Wk3_Loc'     // Old Path"D:\Documents\Grad School\Large Scale Application Deployment\Week 3\Tech Task\GitHub\heroes-react"' //cleanup workspace
         git branch: 'Tech Task Wk3 Pipeline', url: 'https://github.com/bandrews9832/heroes-react.git'
         //bat 'git clone https://github.com/bandrews9832/heroes-react.git -p env.Tech_Task_Wk3_Loc' //clone git repo
     }
