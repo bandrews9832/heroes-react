@@ -10,7 +10,7 @@ node {
         //update "heroes-react" to your project name
         dir('D:\\Documents\\Grad School\\Large Scale Application Deployment\\Jenkins Directory\\heroes-react') {
             bat 'npm install' //install dependencies
-            bat 'npm audit fix' //correct any potential vulnerabilities 
+            //bat 'npm audit fix' //correct any potential vulnerabilities 
             bat 'npm run build -- --prod' //run build
             archiveArtofacts 'build/**'
         }
